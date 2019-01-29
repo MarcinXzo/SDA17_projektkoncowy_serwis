@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+    <div th:replace="template :: navigator"></div>
+
+    <h2>Profile:</h2>
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
+    </div>
+
+    <form th:action="@{/admin/servicetasks/list}" method="post">
+        <select name="status">
+            <option th:each="option: ${options}" th:value="${option}" th:text="${option}"></option>
+        </select>
+        <input type="submit" th:value="Filter">
+    </form>
+
+    <div class="container">
+        <!--Tu będziemy pisać content <> start-->
+
+        <div class="row col-12" th:each="task : ${tasks}">
+            <div class="col-2"><p th:text="${task.id}"></p></div>
+            <div class="col-2"><p th:text="${task.device.name}"></p></div>
+            <div class="col-2"><p th:text="${task.description}"></p></div>
+            <div class="col-2"><p th:text="${task.dateAdded}"></p></div>
+            <div class="col-2"><p th:text="${task.dateResolved}"></p></div>
+        </div>
+
+        <!--<div class="row col-12">-->
+        <!--<div class="row col-6">-->
+        <!--&lt;!&ndash;undone&ndash;&gt;-->
+        <!--<div class="row col-12" th:each="task : ${tasks}" th:if="${task.dateResolved== null}">-->
+        <!--<div class="col-3"><p th:text="${task.id}"></p></div>-->
+        <!--<div class="col-3"><p th:text="${task.device.name}"></p></div>-->
+        <!--<div class="col-3"><p th:text="${task.description}"></p></div>-->
+        <!--<div class="col-3"><p th:text="${task.dateAdded}"></p></div>-->
+        <!--&lt;!&ndash;<div class="col-2"><p th:text="${task.dateResolved}"></p></div>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-6">-->
+        <!--&lt;!&ndash;done&ndash;&gt;-->
+        <!--<div class="row col-12" th:each="task : ${tasks}" th:if="${task.dateResolved!= null}">-->
+        <!--<div class="col-2"><p th:text="${task.id}"></p></div>-->
+        <!--<div class="col-2"><p th:text="${task.device.name}"></p></div>-->
+        <!--<div class="col-2"><p th:text="${task.description}"></p></div>-->
+        <!--<div class="col-2"><p th:text="${task.dateAdded}"></p></div>-->
+        <!--<div class="col-2"><p th:text="${task.dateResolved}"></p></div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--Tu będziemy pisać content <> end -->
+    </div>
+</div>
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>

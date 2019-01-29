@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Register Form</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+    <div th:replace="template :: navigator"></div>
+
+    <h2>Add Device Form:</h2>
+
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
+    </div>
+
+    <div class="container">
+        <!--Tu będziemy pisać content <> start-->
+        <form th:action="@{/view/device/add}" method="post" th:object="${added_device}">
+            <div class="row ">
+                <!--Odsuwam od lewej o 1 kolumne, szerokość ustawiam na 8 kolumn-->
+                <input class="form-control" type="number" th:field="*{userId}" th:value="*{userId}" hidden>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-8">
+                    <!--<div class="col-md-offset-2 col-md-8">-->
+                    <div class="col-md-6">Name:</div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-8">
+                    <!--<div class="col-md-offset-2 col-md-8">-->
+                    <div class="col-md-6">Value:</div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="number" step="0.01" th:field="*{value}">
+                    </div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-offset-2 col-md-6">
+                    <!--<div class="col-md-offset-2 col-md-8"> &lt;!&ndash;guzik&ndash;&gt;-->
+                    <input type="submit" class="form-control" value="submit">
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+            </div>
+        </form>
+    </div>
+
+
+    <!--Tu będziemy pisać content <> end -->
+</div>
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>

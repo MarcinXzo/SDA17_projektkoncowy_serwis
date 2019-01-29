@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Add Service Task</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+    <div th:replace="template :: navigator"></div>
+
+    <h2>Task List:</h2>
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
+    </div>
+
+    <div class="container">
+        <!--Tu będziemy pisać content <> start-->
+        <form th:action="@{/view/servicetask/add}" method="post" th:object="${created_task}">
+            <div class="row" th:if="${user_devices}">
+                <div class="col-md-6">Device</div>
+                <select class="col-md-6 form-control" th:field="*{deviceId}">
+                    <option th:each="device : ${user_devices}" th:text="${device.name}"
+                            th:value="${device.id}"></option>
+                </select>
+            </div>
+            <input th:if="${user_devices == null}" th:field="*{deviceId}" th:value="*{deviceId}" hidden>
+            <div class="row">
+                <div class="col-md-6">Description</div>
+                <input class="col-md-6 form-control" th:field="*{description}" type="text">
+            </div>
+            <div class="row">
+                <input class="col-md-12 form-control" type="submit" th:value="Submit">
+            </div>
+        </form>
+        <!--Tu będziemy pisać content <> end -->
+    </div>
+</div>
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>

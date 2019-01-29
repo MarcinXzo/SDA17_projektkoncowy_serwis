@@ -1,0 +1,60 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Register Form</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+    <div th:replace="template :: navigator"></div>
+
+    <h2>Profile:</h2>
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
+    </div>
+
+    <div class="container">
+        <!--Tu będziemy pisać content <> start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">Name:</div>
+                    <div class="col-md-6"><p th:text="${appuser.name}"></p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">Surname:</div>
+                    <div class="col-md-6"><p th:text="${appuser.surname}"></p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">Email:</div>
+                    <div class="col-md-6"><p th:text="${appuser.email}"></p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row colored" th:each="i : ${deviceList}">
+                    <div class="col-md-2"><p th:text="${i.name}"></p></div>
+                    <div class="col-md-4"><p th:text="${i.value}"></p></div>
+                    <div class="col-md-4"><p th:text="${i.dateAdded}"></p></div>
+                    <div class="col-md-2">
+                        <a th:href="@{'/view/servicetask/add/'+ ${i.id}}">Add task</a>
+                        <a th:href="@{'/view/device/delete/'+ ${i.id}}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Tu będziemy pisać content <> end -->
+    </div>
+</div>
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>

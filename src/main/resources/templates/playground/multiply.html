@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Multiplication form</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+
+    <div th:replace="template :: navigator"></div>
+
+    <main role="main" class="inner cover">
+        <div class="row">
+            <div class="col-6">
+                <form th:action="@{/play/multiply}" th:method="post">
+                    <div class="row">
+                        <div class="col-6">
+                            <h2>Formularz:</h2>
+                        </div>
+                    </div> <!-- formularz -->
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="size_x">Size X:</label>
+                        </div>
+                        <div class="col-4">
+                            <input id="size_x" name="x"/>
+                        </div>
+                    </div> <!-- size x-->
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="size_x">Size Y:</label>
+                        </div>
+                        <div class="col-4">
+                            <input id="size_y" name="y"/>
+                        </div>
+                    </div> <!-- size y-->
+
+                    <div class="row">
+                        <!--<div class="col-4">-->
+                        <!--</div>-->
+                        <div class="col-md-offset-4 col-4">
+                            <input type="submit" name="Submit">
+                        </div>
+                    </div> <!-- guzik submit -->
+
+                </form>
+            </div> <!--lewa-->
+            <div class="col-6">
+                <div th:if="${size_x}" >
+                    <!--/play/multiply-->
+                    <table>
+                        <div th:each="x : ${#numbers.sequence(1, size_x)}">
+                            <tr>
+                                <div th:each="y : ${#numbers.sequence(1, size_y)}">
+                                    <td th:text="${x*y}"></td>
+                                </div>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+            </div> <!--prawa-->
+        </div>
+    </main>
+</div>
+
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>

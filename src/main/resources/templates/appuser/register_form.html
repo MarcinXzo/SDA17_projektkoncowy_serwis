@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" template :: headeer">
+    <meta charset="UTF-8">
+    <title>Register Form</title>
+</head>
+<body class="text-center">
+<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+    <div th:replace="template :: navigator"></div>
+
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
+    </div>
+
+    <div class="container">
+        <!--Tu będziemy pisać content <> start-->
+        <form th:action="@{/register}" method="post" th:object="${added_object}">
+            <div class="row ">
+                <!--Odsuwam od lewej o 1 kolumne, szerokość ustawiam na 8 kolumn-->
+                <div class="row col-md-8">
+                    <!--<div class="">-->
+                    <div class="col-md-6">Name</div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-8">
+                    <!--<div class="col-md-offset-2 col-md-8">-->
+                    <div class="col-md-6">Surname</div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{surname}"></div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-8">
+                    <!--<div class="col-md-offset-2 col-md-8">-->
+                    <div class="col-md-6">Email</div>
+                    <div class="col-md-6"><input class="form-control" type="email" th:field="*{email}"></div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-8">
+                    <!--<div class="col-md-offset-2 col-md-8">-->
+                    <div class="col-md-6">Password</div>
+                    <div class="col-md-6"><input class="form-control" type="password" th:field="*{password}"></div>
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+                <div class="row col-md-offset-2 col-md-6">
+                    <!--<div class="col-md-offset-2 col-md-8"> &lt;!&ndash;guzik&ndash;&gt;-->
+                    <input type="submit" class="form-control" value="submit">
+                    <!--</div>-->
+                </div>
+                <!--/////////////////////////////////////////////////////-->
+            </div>
+        </form>
+    </div>
+
+
+    <!--Tu będziemy pisać content <> end -->
+</div>
+<footer th:replace=" template :: footer"></footer>
+</body>
+</html>
