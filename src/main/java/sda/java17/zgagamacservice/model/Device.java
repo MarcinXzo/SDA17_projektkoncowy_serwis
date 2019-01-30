@@ -21,7 +21,9 @@ public class Device {
     private String name;
     private Double value;
     private LocalDateTime dateAdded;
-
+    private String serialNumber;
+    private int productionYear;
+// dopisac funkcjonalnosc
 
     @ManyToOne
     @JsonIgnore

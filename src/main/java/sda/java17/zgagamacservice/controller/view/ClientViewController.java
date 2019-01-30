@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/view/client/")
+@RequestMapping("/view/appuser/")
 public class ClientViewController {
 
     @Autowired

@@ -21,14 +21,19 @@
                 <!--Odsuwam od lewej o 1 kolumne, szerokość ustawiam na 8 kolumn-->
                 <input class="form-control" type="number" th:field="*{userId}" th:value="*{userId}" hidden>
                 <!--/////////////////////////////////////////////////////-->
-                <div class="row col-md-8">
+                <div class="row col-md-10">
                     <!--<div class="col-md-offset-2 col-md-8">-->
                     <div class="col-md-6">Name:</div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{productionYear}"></div>
+                    <div class="col-md-6">Year of production:</div>
                     <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <div class="col-md-6">Serial Number:</div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <!--dopisac pola rocznik i sn-->
                     <!--</div>-->
                 </div>
                 <!--/////////////////////////////////////////////////////-->
-                <div class="row col-md-8">
+                <div class="row col-md-10">
                     <!--<div class="col-md-offset-2 col-md-8">-->
                     <div class="col-md-6">Value:</div>
                     <div class="col-md-6">

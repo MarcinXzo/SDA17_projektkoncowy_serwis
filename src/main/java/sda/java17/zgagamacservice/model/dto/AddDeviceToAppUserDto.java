@@ -12,8 +12,12 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddDeviceToAppUserDto {
+
+    // dopisac tu tez brakujace pola.
     @NotNull
     private Long userId;
     private String name;
     private Double value;
+    private int productionYear;
+    private String serialNumber;
 }

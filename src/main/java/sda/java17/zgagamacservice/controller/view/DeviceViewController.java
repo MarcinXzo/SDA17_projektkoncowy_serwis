@@ -16,7 +16,7 @@ import sda.java17.zgagamacservice.service.LoginService;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/view/device/")
+@RequestMapping("/view/device/") //kolejnr mappingi skladaja sie w cala sciezke
 public class DeviceViewController {
 
     @Autowired
@@ -61,6 +61,6 @@ public class DeviceViewController {
         }
 
         // jeśli uda się zalogować wyświetl (przekieruj na) profil użytkownika
-        return "redirect:/view/appuser/profile/" + dto.getUserId() + "/";
+        return "redirect:/view/appuser/profile";
     }
 }
