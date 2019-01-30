@@ -1,41 +1,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+<head>
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
     <title>Login Form</title>
 </head>
 <body class="text-center">
 <div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
-    <div th:replace="template :: navigator"></div>
 
     <h2>Login page:</h2>
     <div th:if="${error_message}">
         <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
     </div>
 
-    <div class="container">
+    <div class="container padding-additional200">
         <!--Tu będziemy pisać content <> start-->
+        <form th:action="@{/login}" method="post">
 
-        <div class="row">
-            <div class="col-md-offset-5 col-md-3">
-                <div class="form-login">
-                    <h4>Welcome back.</h4>
-                    <input type="text" id="username" class="form-control input-sm chat-input" placeholder="username" />
-                    </br>
-                    <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
-                    </br>
-                    <div class="wrapper">
+            <div class="row">
+                <div class="offset-md-3 col-md-6">
+                    <div class="form-login">
+                        <h4>Login Please</h4>
+                        <input type="text" name="username" id="username" class="form-control input-sm chat-input"
+                               placeholder="username"/>
+                        </br>
+                        <input type="text" id="Password" name="password" class="form-control input-sm chat-input"
+                               placeholder="password"/>
+                        </br>
+                        <div class="wrapper">
             <span class="group-btn">
-                <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
+                <input class="form-control" type="submit" value="Login">
             </span>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
+        </form>
 
         <!--Tu będziemy pisać content <> end-->
     </div>
 </div>
-<footer th:replace=" template :: footer"></footer>
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>

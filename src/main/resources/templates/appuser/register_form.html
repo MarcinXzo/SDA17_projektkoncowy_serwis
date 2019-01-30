@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+<head>
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
     <title>Register Form</title>
 </head>
@@ -58,6 +59,7 @@
 
     <!--Tu będziemy pisać content <> end -->
 </div>
-<footer th:replace=" template :: footer"></footer>
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>
+

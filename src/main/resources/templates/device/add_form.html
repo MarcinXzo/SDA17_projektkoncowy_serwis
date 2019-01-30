@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+
+<head>
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
-    <title>Register Form</title>
+    <title>Login Form</title>
 </head>
+
 <body class="text-center">
 <div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
     <div th:replace="template :: navigator"></div>
@@ -24,11 +27,11 @@
                 <div class="row col-md-10">
                     <!--<div class="col-md-offset-2 col-md-8">-->
                     <div class="col-md-6">Name:</div>
-                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{productionYear}"></div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
                     <div class="col-md-6">Year of production:</div>
-                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{productionYear}"></div>
                     <div class="col-md-6">Serial Number:</div>
-                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{name}"></div>
+                    <div class="col-md-6"><input class="form-control" type="text" th:field="*{serialNumber}"></div>
                     <!--dopisac pola rocznik i sn-->
                     <!--</div>-->
                 </div>
@@ -55,6 +58,6 @@
 
     <!--Tu będziemy pisać content <> end -->
 </div>
-<footer th:replace=" template :: footer"></footer>
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>

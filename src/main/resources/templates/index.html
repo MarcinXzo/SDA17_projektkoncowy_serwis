@@ -1,26 +1,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+<head >
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
-    <div th:replace="template :: navigator"></div>
-
-    <h2>Profile:</h2>
-    <div th:if="${error_message}">
-        <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
-    </div>
-
-    <div class="container">
-        <!--Tu będziemy pisać content <> start-->
-        <h2>Welcome!</h2>
-        <div th:if="${username}">
-            Hello <p th:text="${username}"></p>!
-        </div>
-        <!--Tu będziemy pisać content <> end -->
-    </div>
+<div th:replace="template :: navigator"></div>
+<div th:if="${error_message}">
+    <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
 </div>
-<footer th:replace=" template :: footer"></footer>
+
+<div class="container">
+    <!--Tu będziemy pisać content <> start-->
+    <h2>Welcome!</h2>
+    <div th:if="${username}">
+        Hello <p th:text="${username}"></p>!
+    </div>
+    <!--Tu będziemy pisać content <> end -->
+</div>
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>

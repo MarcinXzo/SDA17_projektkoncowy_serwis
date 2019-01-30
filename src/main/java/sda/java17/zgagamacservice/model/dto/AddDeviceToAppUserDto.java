@@ -18,6 +18,6 @@ public class AddDeviceToAppUserDto {
     private Long userId;
     private String name;
     private Double value;
-    private int productionYear;
     private String serialNumber;
+    private int productionYear;
 }
