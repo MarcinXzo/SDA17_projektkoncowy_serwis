@@ -16,11 +16,11 @@ public class DefaultUserCreator {
 
     @Autowired
     public DefaultUserCreator(AppUserService appuserService) {
-        Optional<AppUser> appUserOptional = appuserService.findByEmail("admin@localhost");
+        Optional<AppUser> appUserOptional = appuserService.findByEmail("admin@hime.pl");
         if (!appUserOptional.isPresent()) {
             appuserService.register(
                     new AddAppUserDto(
-                            "admin@localhost",
+                            "admin@hime.pl",
                             "-",
                             "-",
                             "admin"));

@@ -13,6 +13,7 @@ import sda.java17.zgagamacservice.model.dto.AddDeviceToAppUserDto;
 import sda.java17.zgagamacservice.service.DeviceService;
 import sda.java17.zgagamacservice.service.LoginService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -62,5 +63,20 @@ public class DeviceViewController {
 
         // jeśli uda się zalogować wyświetl (przekieruj na) profil użytkownika
         return "redirect:/view/appuser/profile";
+    }
+
+    @GetMapping("/list")
+    public String list(Model model) {
+        Optional<AppUser> clientOptional = loginService.getLoggedInUser();
+        if (!clientOptional.isPresent()) {
+            // jeśli nie jesteśmy zalogowani przekieruj na panel logowania
+            return "redirect:/login";
+        }
+
+        List<Device> deviceList = clientOptional.get().getDeviceList();
+        // przekazujemy obiekt do formularza (żeby go za chwilę wypełnić)
+        model.addAttribute("devices", deviceList);
+
+        return "device/list";// zwracam nazwę html
     }
 }

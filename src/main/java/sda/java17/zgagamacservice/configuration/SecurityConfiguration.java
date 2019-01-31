@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sda.java17.zgagamacservice.service.LoginService;
@@ -18,12 +19,10 @@ import sda.java17.zgagamacservice.service.LoginService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private LoginService loginService;
+    private UserDetailsService loginService1;
 
-    @Bean
-    public BCryptPasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -57,8 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 
-        daoAuthenticationProvider.setUserDetailsService(loginService);
-        daoAuthenticationProvider.setPasswordEncoder(getEncoder());
+        daoAuthenticationProvider.setUserDetailsService(loginService1);
+        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder);
 
         return daoAuthenticationProvider;
     }

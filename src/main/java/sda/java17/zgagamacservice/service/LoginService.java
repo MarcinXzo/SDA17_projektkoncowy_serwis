@@ -14,14 +14,11 @@ import sda.java17.zgagamacservice.model.AppUser;
 
 import java.util.Optional;
 
-@Service(value = "loginService")
+@Service(value = "loginService1")
 public class LoginService implements UserDetailsService {
 
     @Autowired
     private AppUserService appUserService;
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private DefaultUserCreator defaultUserCreator;
