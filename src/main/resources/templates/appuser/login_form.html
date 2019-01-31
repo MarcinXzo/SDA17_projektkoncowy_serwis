@@ -5,14 +5,13 @@
     <title>Login Form</title>
 </head>
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+<div class="container padding-additional200">
 
     <h2>Login page:</h2>
     <div th:if="${error_message}">
         <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
     </div>
 
-    <div class="container padding-additional200">
         <!--Tu będziemy pisać content <> start-->
         <form th:action="@{/login}" method="post">
 
@@ -39,7 +38,6 @@
 
         <!--Tu będziemy pisać content <> end-->
     </div>
-</div>
 <th:block th:include="template :: scripts_js"/>
 </body>
 </html>

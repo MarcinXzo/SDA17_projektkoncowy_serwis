@@ -2,10 +2,10 @@
 <head>
     <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
-    <title>Register Form</title>
+    <title>Profile</title>
 </head>
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+<div class="container">
     <div th:replace="template :: navigator"></div>
 
     <h2>Profile:</h2>
@@ -13,7 +13,7 @@
         <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
     </div>
 
-    <div class="container">
+    <div>
         <!--Tu będziemy pisać content <> start-->
 
         <div class="row">

@@ -1,10 +1,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+<head>
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Login Form</title>
 </head>
+
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+<div class="container">
     <div th:replace="template :: navigator"></div>
 
     <h2>Profile:</h2>
@@ -19,7 +21,7 @@
         <input type="submit" th:value="Filter">
     </form>
 
-    <div class="container">
+    <div>
         <!--Tu będziemy pisać content <> start-->
 
         <div class="row col-12" th:each="task : ${tasks}">
@@ -56,6 +58,5 @@
         <!--Tu będziemy pisać content <> end -->
     </div>
 </div>
-<footer th:replace=" template :: footer"></footer>
-</body>
+<th:block th:include="template :: scripts_js"/></body>
 </html>

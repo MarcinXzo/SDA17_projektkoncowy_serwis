@@ -1,10 +1,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace=" template :: headeer">
+<head>
+    <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Login Form</title>
 </head>
+
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+<div class="container">
     <div th:replace="template :: navigator"></div>
 
     <div class="top-right-align">
@@ -16,7 +18,7 @@
         <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
     </div>
 
-    <div class="container">
+    <div>
         <!--Tu będziemy pisać content <> start-->
         <div class="row" th:each="task : ${serviceTasks}">
             <div class="col-md-3"><p th:text="${task.dateAdded}"></p></div>
@@ -27,6 +29,6 @@
         <!--Tu będziemy pisać content <> end -->
     </div>
 </div>
-<footer th:replace=" template :: footer"></footer>
+<th:block th:include="template :: scripts_js"/>
 </body>
 </html>

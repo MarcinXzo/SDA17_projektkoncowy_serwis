@@ -6,14 +6,14 @@
     <title>Register Form</title>
 </head>
 <body class="text-center">
-<div class="d-flex w-75 h-100 p-3 mx-auto flex-column">
+<div class="container">
     <div th:replace="template :: navigator"></div>
 
     <div th:if="${error_message}">
         <div class="alert alert-danger" role="alert"><p th:text="${error_message}"></p></div>
     </div>
 
-    <div class="container">
+    <div>
         <!--Tu będziemy pisać content <> start-->
         <form th:action="@{/register}" method="post" th:object="${added_object}">
             <div class="row ">

@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </th:block>
 <body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<div class="container">
     <div th:fragment="navigator">
         <header class="masthead mb-auto">
             <div class="inner">
@@ -14,7 +14,7 @@
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link" href="/">Home</a>
                     <!--Kiedy jesteśmy zalogowani-->
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" href="/view/client/profile">Profile</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" href="/view/appuser/profile">Profile</a>
                     <a sec:authorize="isAuthenticated()" class="nav-link" href="/play/multiply">Playground</a>
                     <a sec:authorize="isAuthenticated()" class="nav-link" href="/view/servicetask/list">Tasks</a>
                     <a sec:authorize="isAuthenticated()" class="nav-link" href="/view/device/add">Add Device</a>
