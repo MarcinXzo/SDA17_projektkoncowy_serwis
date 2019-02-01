@@ -94,12 +94,4 @@ public class AppUserService {
         return appUserRepository.findByEmail(email);
     }
 
-    public void remove(Long id) {
-        AppUser user = appUserRepository.getOne(id);
-        for (Device d : user.getDeviceList()) {
-            deviceRepository.deleteById(d.getId());
-        }
-
-        appUserRepository.deleteById(id);
-    }
 }

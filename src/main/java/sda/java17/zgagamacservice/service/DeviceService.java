@@ -57,6 +57,10 @@ public class DeviceService {
         return new ArrayList<>();
     }
 
+    public void remove(Long id) {
+        deviceRepository.deleteById(id);
+    }
+
     public Optional<Device> modify(ModifyDeviceDto dto) {
         return Optional.empty();
     }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sda.java17.zgagamacservice.model.AppUser;
@@ -78,5 +79,12 @@ public class DeviceViewController {
         model.addAttribute("devices", deviceList);
 
         return "device/list";// zwracam nazwę html
+    }
+
+    @GetMapping("/delete/{id}")
+    public String remove(Model model, @PathVariable (name = "id") Long id) {
+        deviceService.remove(id);
+
+        return "redirect:/view/device/list";// zwracam nazwę html
     }
 }
