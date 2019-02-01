@@ -61,4 +61,14 @@ public class ServiceTaskService {
 
         return serviceTaskRepository.findAll();
     }
+
+    public void remove(Long id) {
+           serviceTaskRepository.deleteById(id);
+
+    }
+
+    public void modify(Long id) {
+        serviceTaskRepository.getOne(id);
+
+    }
 }

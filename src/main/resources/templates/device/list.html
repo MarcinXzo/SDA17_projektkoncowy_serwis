@@ -15,15 +15,19 @@
 
     <div>
         <div class="row ">
-            <div class="row col-md-10" th:each="dev : ${devices}">
+            <div class="row col-md-12" th:each="dev : ${devices}">
                 <!--<div class="col-md-offset-2 col-md-8">-->
-                <div class="col-md-6" th:text="${dev.name}"></div>
-                <div class="col-md-6" th:text="${dev.value}"></div>
-                <div class="col-md-6" th:text="${dev.dateAdded}"></div>
-                <div class="col-md-6" th:text="${dev.serialNumber}"></div>
-                <div class="col-md-6" th:text="${dev.productionYear}"></div>
-                <div class="col-md-6"><input class="form-control" type="text" th:field="*{serialNumber}"></div>
-               
+                <div class="col-md-2" th:text="${dev.name}"></div>
+                <div class="col-md-1" th:text="${dev.value}"></div>
+                <div class="col-md-2" th:text="${dev.dateAdded}"></div>
+                <div class="col-md-2" th:text="${dev.serialNumber}"></div>
+                <div class="col-md-2" th:text="${dev.productionYear}"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1" style="text-align:center; font-size:75%" >
+                    <a th:href="@{'/device/removeDevice?deviceToRemoveId=' + ${dev.getId()}}">Remove</a></div>
+                <div class="col-md-1" style="text-align:center; font-size:75%"><a>Update</a></div>
+
+
                 <!--</div>-->
             </div>
         </div>

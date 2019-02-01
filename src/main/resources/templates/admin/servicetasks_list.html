@@ -30,6 +30,7 @@
             <div class="col-2"><p th:text="${task.description}"></p></div>
             <div class="col-2"><p th:text="${task.dateAdded}"></p></div>
             <div class="col-2"><p th:text="${task.dateResolved}"></p></div>
+            <a th:href="@{'/admin/remove?taskToRemoveId=' + ${task.getId()}}">Remove</a></div>
         </div>
 
         <!--<div class="row col-12">-->

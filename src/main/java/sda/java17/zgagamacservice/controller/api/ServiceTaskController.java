@@ -33,4 +33,11 @@ public class ServiceTaskController {
         return ResponseEntity.ok(tasks);
     }
 
+    @RequestMapping(value = "/removeServiceTask", method = RequestMethod.GET)
+    public String removeServiceTask(@RequestParam(name = "serviceTaskToRemoveId") Long id) {
+        serviceTaskService.remove(id);
+//    return "admin/userlist";
+        return "redirect:/servicetask/list";
+    }
+
 }
