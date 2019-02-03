@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sda.java17.zgagamacservice.model.AppUser;
 import sda.java17.zgagamacservice.model.Device;
 import sda.java17.zgagamacservice.model.dto.AddDeviceToAppUserDto;
+import sda.java17.zgagamacservice.model.dto.ModifyDeviceDto;
 import sda.java17.zgagamacservice.service.DeviceService;
 import sda.java17.zgagamacservice.service.LoginService;
 
@@ -46,6 +47,19 @@ public class DeviceViewController {
         return "device/add_form";// zwracam nazwę html
     }
 
+    @GetMapping("/edit/{id}")
+    public String getList(Model model, @PathVariable(name = "id", required = true) Long id) {
+        Device device = deviceService.getOne(id);
+        ModifyDeviceDto modifyDeviceDto = new ModifyDeviceDto();
+        modifyDeviceDto.setIdToModify(device.getId());
+        modifyDeviceDto.setName(device.getName());
+        modifyDeviceDto.setProductionYear(device.getProductionYear());
+        modifyDeviceDto.setSerialNumber(device.getSerialNumber());
+        modifyDeviceDto.setValue(device.getValue());
+        model.addAttribute("deviceToEdit", modifyDeviceDto);
+        return "device/edit_form";
+    }
+
     @PostMapping("/add")
     public String add(Model model, AddDeviceToAppUserDto dto) {
         // weryfikacja że ID w dto jest takie samo jak Id zalogowanego użytkownika.
@@ -66,6 +80,12 @@ public class DeviceViewController {
         return "redirect:/view/appuser/profile";
     }
 
+    @PostMapping("/edit/{id}")
+    public String modify(ModifyDeviceDto device, @PathVariable(name = "id", required = true) Long id) {
+        Device dev = deviceService.modify(id, device);
+        return "redirect:/view/device/list";
+    }
+
     @GetMapping("/list")
     public String list(Model model) {
         Optional<AppUser> clientOptional = loginService.getLoggedInUser();
@@ -82,7 +102,7 @@ public class DeviceViewController {
     }
 
     @GetMapping("/delete/{id}")
-    public String remove(Model model, @PathVariable (name = "id") Long id) {
+    public String remove(Model model, @PathVariable(name = "id") Long id) {
         deviceService.remove(id);
 
         return "redirect:/view/device/list";// zwracam nazwę html

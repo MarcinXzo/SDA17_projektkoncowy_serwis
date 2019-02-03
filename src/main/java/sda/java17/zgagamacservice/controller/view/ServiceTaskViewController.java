@@ -110,4 +110,11 @@ public class ServiceTaskViewController {
 
         return "redirect:/login";
     }
+
+    @GetMapping("/delete/{id}")
+    public String remove(Model model, @PathVariable (name = "id") Long id) {
+        serviceTaskService.remove(id);
+
+        return "redirect:/view/servicetask/list";// zwracam nazwę html
+    }
 }

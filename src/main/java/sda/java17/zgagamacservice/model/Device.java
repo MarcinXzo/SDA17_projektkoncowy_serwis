@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class Device {
     private Long id;
     private String name;
     private Double value;
+    @CreationTimestamp
     private LocalDateTime dateAdded;
     private String serialNumber;
     private int productionYear;

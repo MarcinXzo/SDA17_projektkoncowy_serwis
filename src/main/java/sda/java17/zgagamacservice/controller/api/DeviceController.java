@@ -29,10 +29,10 @@ public class DeviceController {
 
     @PostMapping("/modify")
     public ResponseEntity modify(@RequestBody ModifyDeviceDto dto) {
-        Optional<Device> optionalDevice = deviceService.modify(dto);
-        if (optionalDevice.isPresent()) {
-            return ResponseEntity.ok(optionalDevice.get());
-        }
+//        Optional<Device> optionalDevice = deviceService.modify(dto);
+//        if (optionalDevice.isPresent()) {
+//            return ResponseEntity.ok(optionalDevice.get());
+//        }
         return ResponseEntity.badRequest().build();
     }
 

@@ -32,6 +32,8 @@ public class DeviceService {
             device.setDateAdded(LocalDateTime.now());
             device.setName(dto.getName());
             device.setValue(dto.getValue());
+            device.setSerialNumber(dto.getSerialNumber());
+            device.setProductionYear(dto.getProductionYear());
 
             device.setOwner(appuser);
             device = deviceRepository.save(device);
@@ -61,7 +63,19 @@ public class DeviceService {
         deviceRepository.deleteById(id);
     }
 
-    public Optional<Device> modify(ModifyDeviceDto dto) {
-        return Optional.empty();
+
+
+    public Device getOne(Long id) {
+        return deviceRepository.getOne(id);
+    }
+
+    public Device modify(Long id, ModifyDeviceDto device) {
+        Device deviceToModify = deviceRepository.getOne(id);
+        deviceToModify.setName(device.getName());
+        deviceToModify.setValue(device.getValue());
+        deviceToModify.setSerialNumber(device.getSerialNumber());
+        deviceToModify.setProductionYear(device.getProductionYear());
+
+        return deviceRepository.save(deviceToModify);
     }
 }

@@ -23,8 +23,10 @@
         <div class="row" th:each="task : ${serviceTasks}">
             <div class="col-md-3"><p th:text="${task.dateAdded}"></p></div>
             <div class="col-md-3"><p th:text="${task.description}"></p></div>
-            <div class="col-md-3">Delete</div>
+            <div class="col-md-3"></div>
+                <a th:href="@{'/servicetask/removeServiceTask?serviceTaskToRemoveId=' + ${task.getId()}}">Remove</a></div>
             <div class="col-md-3">Modify</div>
+
         </div>
         <!--Tu będziemy pisać content <> end -->
     </div>

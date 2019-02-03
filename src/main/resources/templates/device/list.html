@@ -23,9 +23,12 @@
                 <div class="col-md-2" th:text="${dev.serialNumber}"></div>
                 <div class="col-md-2" th:text="${dev.productionYear}"></div>
                 <div class="col-md-1"></div>
-                <div class="col-md-1" style="text-align:center; font-size:75%" >
-                    <a th:href="@{'/device/removeDevice?deviceToRemoveId=' + ${dev.getId()}}">Remove</a></div>
-                <div class="col-md-1" style="text-align:center; font-size:75%"><a>Update</a></div>
+                <div class="col-md-1" style="text-align:center; font-size:75%">
+                    <a th:href="@{'/view/device/delete/' + ${dev.getId()}}">Remove</a>
+                </div>
+                <div class="col-md-1" style="text-align:center; font-size:75%">
+                    <a th:href="@{'/view/device/edit/' + ${dev.id}}">Update</a>
+                </div>
 
 
                 <!--</div>-->
