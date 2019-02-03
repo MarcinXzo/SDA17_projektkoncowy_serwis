@@ -12,6 +12,7 @@ import sda.java17.zgagamacservice.model.AppUser;
 import sda.java17.zgagamacservice.model.Device;
 import sda.java17.zgagamacservice.model.ServiceTask;
 import sda.java17.zgagamacservice.model.dto.AddServiceTaskDto;
+import sda.java17.zgagamacservice.model.dto.ModifyServiceTaskDto;
 import sda.java17.zgagamacservice.service.LoginService;
 import sda.java17.zgagamacservice.service.ServiceTaskService;
 
@@ -116,5 +117,11 @@ public class ServiceTaskViewController {
         serviceTaskService.remove(id);
 
         return "redirect:/view/servicetask/list";// zwracam nazwę html
+    }
+
+    @PostMapping("/edit/{id}")
+    public String modify(ModifyServiceTaskDto serviceTask, @PathVariable(name = "id", required = true) Long id) {
+        ServiceTask serv = serviceTaskService.modify(id, serviceTask);
+        return "redirect:/view/servicetask/list";
     }
 }

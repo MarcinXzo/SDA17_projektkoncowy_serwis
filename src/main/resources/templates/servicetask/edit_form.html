@@ -16,15 +16,15 @@
 
     <div>
         <!--Tu będziemy pisać content <> start-->
-        <form th:action="@{/view/servicetask/add}" method="post" th:object="${created_task}">
+        <form th:action="@{'/view/servicetask/edit'+${serviceTaskToModify}" method="post" th:object="${created_task}">
             <div class="row" th:if="${user_devices}">
                 <div class="col-md-6">Device</div>
-                <select class="col-md-6 form-control" th:field="*{deviceId}">
-                    <option th:each="device : ${user_devices}" th:text="${device.name}"
+                <select class="col-md-6 form-control" th:field="*{serviceTaskId}">
+                    <option th:each="serviceTask : ${serviceTask}" th:text="${serviceTask.name}"
                             th:value="${device.id}"></option>
                 </select>
             </div>
-            <input th:if="${user_devices == null}" th:field="*{deviceId}" th:value="*{deviceId}" hidden>
+            <input th:if="${user_devices == null}" th:field="*{serviceTaskId}" th:value="*{serviceTaskId}" hidden>
             <div class="row">
                 <div class="col-md-6">Description</div>
                 <input class="col-md-6 form-control" th:field="*{description}" type="text">

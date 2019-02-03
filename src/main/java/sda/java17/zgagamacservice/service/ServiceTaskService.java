@@ -7,6 +7,8 @@ import sda.java17.zgagamacservice.model.AppUser;
 import sda.java17.zgagamacservice.model.Device;
 import sda.java17.zgagamacservice.model.ServiceTask;
 import sda.java17.zgagamacservice.model.dto.AddServiceTaskDto;
+import sda.java17.zgagamacservice.model.dto.ModifyDeviceDto;
+import sda.java17.zgagamacservice.model.dto.ModifyServiceTaskDto;
 import sda.java17.zgagamacservice.repository.AppUserRepository;
 import sda.java17.zgagamacservice.repository.DeviceRepository;
 import sda.java17.zgagamacservice.repository.ServiceTaskRepository;
@@ -67,8 +69,14 @@ public class ServiceTaskService {
 
     }
 
-    public void modify(Long id) {
-        serviceTaskRepository.getOne(id);
+    public ServiceTask modify(Long id, ModifyServiceTaskDto serviceTask) {
+        ServiceTask serviceTaskToModify = serviceTaskRepository.getOne(id);
+        serviceTaskToModify.setDateAdded(serviceTask.getDateAdded());
+        serviceTaskToModify.setDateResolved(serviceTask.getDateResolved());
+        serviceTaskToModify.setDateReopened(serviceTask.getDateReopened());
+        serviceTaskToModify.setDescription(serviceTask.getDescription());
+        serviceTaskToModify.setDescription(serviceTask.getComment());
+        return serviceTaskRepository.save(serviceTaskToModify);
 
     }
 }
