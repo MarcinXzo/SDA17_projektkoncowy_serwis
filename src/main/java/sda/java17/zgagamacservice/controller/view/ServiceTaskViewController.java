@@ -124,4 +124,19 @@ public class ServiceTaskViewController {
         ServiceTask serv = serviceTaskService.modify(id, serviceTask);
         return "redirect:/view/servicetask/list";
     }
+
+    @GetMapping("/edit/{id}")
+    public String getList(Model model, @PathVariable(name = "id", required = true) Long id) {
+        ServiceTask serviceTask = serviceTaskService.getOne(id);
+        ModifyServiceTaskDto modifyServiceTaskDto = new ModifyServiceTaskDto();
+        modifyServiceTaskDto.setIdToModify(serviceTask.getId());
+        modifyServiceTaskDto.setDateAdded(serviceTask.getDateAdded());
+        modifyServiceTaskDto.setDateResolved(serviceTask.getDateResolved());
+        modifyServiceTaskDto.setDateReopened(serviceTask.getDateReopened());
+        modifyServiceTaskDto.setDescription(serviceTask.getDescription());
+        modifyServiceTaskDto.setComment(serviceTask.getComment());
+        model.addAttribute("serviceTaskToEdit", modifyServiceTaskDto);
+        return "servicetask/edit_form";
+    }
+
 }

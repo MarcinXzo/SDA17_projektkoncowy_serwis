@@ -79,4 +79,8 @@ public class ServiceTaskService {
         return serviceTaskRepository.save(serviceTaskToModify);
 
     }
+
+    public ServiceTask getOne(Long id) {
+        return serviceTaskRepository.getOne(id);
+    }
 }

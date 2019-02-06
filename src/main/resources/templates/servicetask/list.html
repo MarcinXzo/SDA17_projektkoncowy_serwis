@@ -20,12 +20,17 @@
 
     <div>
         <!--Tu będziemy pisać content <> start-->
-        <div class="row" th:each="task : ${serviceTasks}">
-            <div class="col-md-3"><p th:text="${task.dateAdded}"></p></div>
-            <div class="col-md-3"><p th:text="${task.description}"></p></div>
+        <div class="row">
+        <div class="row col-md-12" th:each="task : ${serviceTasks}">
+            <div class="col-md-3" th:text="${task.dateAdded}"></p></div>
+            <div class="col-md-3" th:text="${task.description}"></p></div>
             <div class="col-md-3"></div>
-                <a th:href="@{'/servicetask/removeServiceTask?serviceTaskToRemoveId=' + ${task.getId()}}">Remove</a></div>
-            <div class="col-md-3">Modify</div>
+                <a th:href="@{'/view/servicetask/delete/' + ${task.getId()}}">delete</a></div>
+            <div class="col-md-3">
+                <!--<a th:href="@{'/view/servicetask/edit/' + ${dev.id}}">Edit</a>-->
+
+            </div>
+        </div>
 
         </div>
         <!--Tu będziemy pisać content <> end -->
